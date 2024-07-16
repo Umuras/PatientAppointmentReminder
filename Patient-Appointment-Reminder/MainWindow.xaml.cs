@@ -27,5 +27,11 @@ namespace Patient_Appointment_Reminder
             AddNewPatient addNewPatient = new AddNewPatient();
             addNewPatient.ShowDialog();
         }
+
+        private void btn_AvailablePatients_Click(object sender, RoutedEventArgs e)
+        {
+            AvailablePatientWindow availablePatientWindow = new AvailablePatientWindow();
+            availablePatientWindow.ShowDialog();
+        }
     }
 }

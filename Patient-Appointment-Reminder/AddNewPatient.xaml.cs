@@ -39,7 +39,7 @@ namespace Patient_Appointment_Reminder
                 //Sql Server'a bağlantı kurmak için SqlConnection türünde nesne oluşturuyoruz.
                 SqlConnection cnn = new SqlConnection();
                 //ConnectionStringe server database ve windows authentication ile bağlanmak için intergrated security true yapıyoruz.
-                cnn.ConnectionString = "server=DESKTOP-LU7IOAV; database=PatientAppointmentSystem; integrated security=true";
+                cnn.ConnectionString = "server=.; database=PatientAppointmentSystem; integrated security=true";
                 //Bağlantıyı açıyoruz.
                 cnn.Open();
 
@@ -66,10 +66,10 @@ namespace Patient_Appointment_Reminder
 
                 SqlParameter p3 = new SqlParameter();
                 p3.ParameterName = "@pbd";
-                p3.SqlDbType = SqlDbType.DateTime;
+                p3.SqlDbType = SqlDbType.Date;
                 if (datepicker_PatientBirthDate.SelectedDate != null)
                 {
-                    p3.SqlValue = datepicker_PatientBirthDate.SelectedDate.Value;
+                    p3.SqlValue = datepicker_PatientBirthDate.SelectedDate.Value.Date;
                 }
                 else
                 {
@@ -81,7 +81,7 @@ namespace Patient_Appointment_Reminder
                 p4.ParameterName = "@pg";
                 p4.SqlDbType = SqlDbType.Char;
 
-                if (rdrBtn_GenderMale.IsChecked.HasValue && rdrBtn_GenderFemale.IsChecked.HasValue)
+                if (!rdrBtn_GenderMale.IsChecked.HasValue && !rdrBtn_GenderFemale.IsChecked.HasValue)
                 {
                     MessageBox.Show("Cinsiyet boş bırakılamaz!!!");
                     return;
