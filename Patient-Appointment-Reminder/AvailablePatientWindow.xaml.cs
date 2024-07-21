@@ -22,6 +22,8 @@ namespace Patient_Appointment_Reminder
     /// </summary>
     public partial class AvailablePatientWindow : Window
     {
+        private Patient _selectedPatient;
+
         public AvailablePatientWindow()
         {
             InitializeComponent();
@@ -117,15 +119,19 @@ namespace Patient_Appointment_Reminder
         {
             //Burada şu oluyor comboBox üzerinde seçilen item aslında Category sınıfının bir nesnesi olduğu için biz onu Category sınıfına
             //Cast edebiliyoruz, bize ilk başta obje olarak döndürdüğü için. Sonra onun üzerinden ID veya isme erişim sağlayabileceğiz.
-            Patient selectedPatient = (Patient)cboAvailablePatients.SelectedItem;
+            _selectedPatient = (Patient)cboAvailablePatients.SelectedItem;
 
             //DataGrid'in ItemsSourceına GetPatientsFromDatabase gelen DataTableı atıyoruz.
-            grdPatients.ItemsSource = GetPatientsFromDatabase(selectedPatient.PatientID).DefaultView;
+            grdPatients.ItemsSource = GetPatientsFromDatabase(_selectedPatient.PatientID).DefaultView;
         }
 
         private void btn_takeAppointment_Click(object sender, RoutedEventArgs e)
         {
-
+            AppointmentCreatingWindow appointment = new AppointmentCreatingWindow();
+            appointment.lbl_PatientNameSurname.Content = cboAvailablePatients.Text;
+            appointment.patientID = _selectedPatient.PatientID;
+            appointment.lbl_PatientID.Content += " " + _selectedPatient.PatientID;
+            appointment.ShowDialog();
         }
 
         
