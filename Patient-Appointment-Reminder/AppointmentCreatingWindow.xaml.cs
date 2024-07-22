@@ -36,7 +36,7 @@ namespace Patient_Appointment_Reminder
                 cnn.ConnectionString = "server=.; database=PatientAppointmentSystem; integrated security=true";
                 cnn.Open();
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "insert Appointment(PatientID,Hospital,Section,AppointmentDate,Note) values(@pid,@hl,@sn,@apd,@nt)";
+                cmd.CommandText = "insert Appointment(PatientID,Hospital,Section,Doctor,AppointmentDate,Note) values(@pid,@hl,@sn,@dr,@apd,@nt)";
 
                 SqlParameter p0 = new SqlParameter();
                 p0.ParameterName = "@pid";
@@ -56,21 +56,27 @@ namespace Patient_Appointment_Reminder
                 p2.SqlValue = txt_HospitalSection.Text.ToString();
 
                 SqlParameter p3 = new SqlParameter();
-                p3.ParameterName = "@apd";
-                p3.SqlDbType = SqlDbType.DateTime;
-                p3.Value = time_Appointment.Value;
+                p3.ParameterName = "@dr";
+                p3.SqlDbType = SqlDbType.NVarChar;
+                p3.Size = 50;
+                p3.SqlValue = txt_Doctor.Text.ToString();
 
                 SqlParameter p4 = new SqlParameter();
-                p4.ParameterName = "@nt";
-                p4.SqlDbType = SqlDbType.NText;
-                p4.Value = txtBox_Note.Text.ToString();
+                p4.ParameterName = "@apd";
+                p4.SqlDbType = SqlDbType.DateTime;
+                p4.Value = time_Appointment.Value;
+
+                SqlParameter p5 = new SqlParameter();
+                p5.ParameterName = "@nt";
+                p5.SqlDbType = SqlDbType.NText;
+                p5.Value = txtBox_Note.Text.ToString();
 
                 cmd.Parameters.Add(p0);
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
                 cmd.Parameters.Add(p3);
                 cmd.Parameters.Add(p4);
-
+                cmd.Parameters.Add(p5);
                 int success = cmd.ExecuteNonQuery();
 
                 if (success != 0)
@@ -78,6 +84,7 @@ namespace Patient_Appointment_Reminder
                     MessageBox.Show("Randevu Kaydı Başarılı");
                     txt_Hospital.Text = "";
                     txt_HospitalSection.Text = "";
+                    txt_Doctor.Text = "";
                     txtBox_Note.Text = "";
                     time_Appointment.Text = "";
                 }

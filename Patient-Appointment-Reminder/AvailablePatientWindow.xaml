@@ -10,7 +10,8 @@
         <ComboBox x:Name="cboAvailablePatients" Canvas.Left="131" Canvas.Top="27" Width="150" SelectionChanged="cboAvailablePatients_SelectionChanged"/>
         <Label Content="Mevcut Hastalar" Canvas.Left="25" Canvas.Top="23" RenderTransformOrigin="0.177,0.075" FontWeight="Bold"/>
         <DataGrid x:Name="grdPatients" Height="300" Width="800" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" Canvas.Top="74" VerticalAlignment="Top"/>
-        <Button x:Name="btn_takeAppointment" Content="Randevu Al" Canvas.Left="725" Canvas.Top="394" Height="30" Width="65" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btn_takeAppointment_Click"/>
+        <Button x:Name="btn_takeAppointment" Content="Randevu Al" Canvas.Left="623" Canvas.Top="395" Height="59" Width="177" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btn_takeAppointment_Click" FontSize="16" FontStretch="Expanded"/>
+        <Button x:Name="btn_deleteOrUpdateAppointment" Content="Randevu Güncelle/Sil" Canvas.Left="435" Canvas.Top="394" Height="59" Width="177" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="17" Click="btn_deleteOrUpdateAppointment_Click"/>
 
     </Canvas>
 </Window>

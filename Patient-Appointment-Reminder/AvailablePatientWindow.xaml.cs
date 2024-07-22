@@ -22,7 +22,7 @@ namespace Patient_Appointment_Reminder
     /// </summary>
     public partial class AvailablePatientWindow : Window
     {
-        private Patient _selectedPatient;
+        private Patient _selectedPatient = new Patient();
 
         public AvailablePatientWindow()
         {
@@ -134,6 +134,15 @@ namespace Patient_Appointment_Reminder
             appointment.ShowDialog();
         }
 
-        
+        private void btn_deleteOrUpdateAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentEditOrDeleteWindow appointmentEditOrDelete = new AppointmentEditOrDeleteWindow(_selectedPatient.PatientID);
+            appointmentEditOrDelete.lbl_PatientID.Content += " " +  _selectedPatient.PatientID;
+            appointmentEditOrDelete.lbl_PatientNameSurname.Content = _selectedPatient.PatientNameSurname;
+            if (appointmentEditOrDelete.hasPatientAppointment)
+            {
+                appointmentEditOrDelete.ShowDialog();
+            }
+        }
     }
 }

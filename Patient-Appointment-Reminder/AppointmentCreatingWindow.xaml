@@ -14,12 +14,14 @@
         <TextBox x:Name="txt_Hospital" Canvas.Left="120" TextWrapping="Wrap" Text="" Canvas.Top="122" Width="400" Height="30" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="Bölüm:" Canvas.Left="32" Canvas.Top="174" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="txt_HospitalSection" Canvas.Left="120" TextWrapping="Wrap" Text="" Canvas.Top="179" Width="400" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="19" FontWeight="Bold"/>
-        <Label Content="Randevu Tarihi:" Canvas.Left="32" Canvas.Top="238" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="Randevu Tarihi:" Canvas.Left="37" Canvas.Top="286" FontSize="19" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <!--<DatePicker x:Name="dp_AppointmentDate" Canvas.Left="193" Canvas.Top="210" SelectedDateFormat="Long"/>-->
-        <wpfTool:DateTimePicker Canvas.Left="199" Canvas.Top="244" x:Name="time_Appointment" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="btn_SaveAppointment" Content="Randevu Kaydet" Canvas.Left="406" Canvas.Top="477" Width="120" Height="40" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_SaveAppointment_Click"/>
-        <Label Content="Not:" Canvas.Left="38" Canvas.Top="305" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBox_Note" Canvas.Left="106" TextWrapping="Wrap" Text="" Canvas.Top="314" Width="415" Height="118" FontSize="19" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <wpfTool:DateTimePicker Canvas.Left="204" Canvas.Top="292" x:Name="time_Appointment" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="btn_SaveAppointment" Content="Randevu Kaydet" Canvas.Left="400" Canvas.Top="477" Width="120" Height="40" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btn_SaveAppointment_Click"/>
+        <Label Content="Not:" Canvas.Left="37" Canvas.Top="334" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBox_Note" Canvas.Left="105" TextWrapping="Wrap" Text="" Canvas.Top="343" Width="415" Height="118" FontSize="19" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="lbl_PatientID" Content="Hasta ID:" Canvas.Left="32" Canvas.Top="10" FontSize="19" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="Doktor:" Canvas.Left="32" Canvas.Top="235" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_Doctor" Canvas.Left="120" TextWrapping="Wrap" Text="" Canvas.Top="240" Width="400" Height="30" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>
 </Window>
