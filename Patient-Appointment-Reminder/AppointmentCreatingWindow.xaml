@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Patient_Appointment_Reminder"
         mc:Ignorable="d"
         Title="AppointmentCreatingWindow" Height="600" Width="800">
-    <Canvas Background="#FF1CD6ED">
+    <Canvas x:Name="AppointmentCreatingWindow2" Background="#FF1CD6ED" ContextMenuClosing="appointmentCreatingWindow_ContextMenuClosing">
         <Label Content="Hasta Adı Soyadı:" Canvas.Left="32" Canvas.Top="60" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="lbl_PatientNameSurname" Content="" Canvas.Left="204" Canvas.Top="60" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="Hastane:" Canvas.Left="32" Canvas.Top="117" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>

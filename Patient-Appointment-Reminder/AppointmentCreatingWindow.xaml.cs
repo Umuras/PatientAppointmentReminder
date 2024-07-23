@@ -22,10 +22,12 @@ namespace Patient_Appointment_Reminder
     public partial class AppointmentCreatingWindow : Window
     {
         public int patientID;
+        private AvailablePatientWindow _availablepatientWindow;
 
-        public AppointmentCreatingWindow()
+        public AppointmentCreatingWindow(AvailablePatientWindow availablepatientWindow)
         {
             InitializeComponent();
+            _availablepatientWindow = availablepatientWindow;
         }
 
         private void btn_SaveAppointment_Click(object sender, RoutedEventArgs e)
@@ -87,6 +89,7 @@ namespace Patient_Appointment_Reminder
                     txt_Doctor.Text = "";
                     txtBox_Note.Text = "";
                     time_Appointment.Text = "";
+                    _availablepatientWindow.grdPatients.ItemsSource = _availablepatientWindow.GetPatientsFromDatabase(patientID).DefaultView;
                 }
                 else
                 {

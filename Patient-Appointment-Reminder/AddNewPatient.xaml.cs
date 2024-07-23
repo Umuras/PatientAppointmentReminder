@@ -49,7 +49,7 @@ namespace Patient_Appointment_Reminder
                 cmd.Connection = cnn;
 
                 //Ekleme işlemi yapıyoruz, Patient tablosundaki kolonlara ekleme yapıyoruz parametreler üzerinden
-                cmd.CommandText = "insert Patient(PatientName,PatientSurname,PatientBirthDate,PatientGender) values(@pn,@psn,@pbd,@pg)";
+                cmd.CommandText = "insert Patient(PatientName,PatientSurname,PatientBirthDate,PatientGender,NumberOfAppointments,NumberOfPastAppointments) values(@pn,@psn,@pbd,@pg,@napt,@pnapt)";
 
                 //Burada CommandText kısmında yazdığımız values(@pn,@psn,@pbd,@pg) parametrelerine değer yüklüyoruz.
                 SqlParameter p1 = new SqlParameter();
@@ -95,11 +95,24 @@ namespace Patient_Appointment_Reminder
                 {
                     p4.SqlValue = _female;
                 }
+
+                SqlParameter p5 = new SqlParameter();
+                p5.ParameterName = "@napt";
+                p5.SqlDbType = SqlDbType.Int;
+                p5.SqlValue = 0;
+
+                SqlParameter p6 = new SqlParameter();
+                p6.ParameterName = "@pnapt";
+                p6.SqlDbType = SqlDbType.Int;
+                p6.SqlValue = 0;
+
                 //Command'ın parameters koleksiyonuna ekliyoruz.
                 cmd.Parameters.Add(p1);
                 cmd.Parameters.Add(p2);
                 cmd.Parameters.Add(p3);
                 cmd.Parameters.Add(p4);
+                cmd.Parameters.Add(p5);
+                cmd.Parameters.Add(p6);
 
                 //ExecuteNonQuery ile işlem eğer başarılı ise yani tabloya kayıt eklendi ise kayıt sayısınca veri dönüyor, eğer başarısız ise 0 
                 //dönüyor.

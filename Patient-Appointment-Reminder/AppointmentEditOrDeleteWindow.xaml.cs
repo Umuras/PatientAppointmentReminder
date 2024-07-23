@@ -26,12 +26,14 @@ namespace Patient_Appointment_Reminder
         public bool hasPatientAppointment = false;
         private int _appointmentCount = 0;
         private AppointmentEntity appointmentEntity;
+        private AvailablePatientWindow _availablepatientWindow;
 
-        public AppointmentEditOrDeleteWindow(int patientID)
+        public AppointmentEditOrDeleteWindow(int patientID, AvailablePatientWindow availablepatientWindow)
         {
             InitializeComponent();
             this.patientID = patientID;
             FillCboAppoinments();
+            _availablepatientWindow = availablepatientWindow;
         }
 
         private void FillCboAppoinments()
@@ -78,7 +80,10 @@ namespace Patient_Appointment_Reminder
 
                 if (lst.Count == 0)
                 {
-                    MessageBox.Show("Hastanın hiç randevusu yok önce randevu oluştur");
+                    if (!hasPatientAppointment)
+                    {
+                        MessageBox.Show("Hastanın hiç randevusu yok önce randevu oluştur");
+                    }
                     hasPatientAppointment = false;
                     _appointmentCount = 0;
                 }
@@ -88,6 +93,7 @@ namespace Patient_Appointment_Reminder
                     _appointmentCount = 0;
                 }
 
+                dr.Close();
                 cnn.Close();
 
                 return lst;
@@ -123,9 +129,9 @@ namespace Patient_Appointment_Reminder
                     txtBox_Note.Text = dr.GetString(dr.GetOrdinal("Note"));
                     time_Appointment.Value = dr.GetDateTime(dr.GetOrdinal("AppointmentDate"));
                 }
-                    
-                
 
+
+                dr.Close();
                 cnn.Close();
             }
             catch (Exception ex)
@@ -212,6 +218,7 @@ namespace Patient_Appointment_Reminder
                     txt_Doctor.Text = "";
                     txtBox_Note.Text = "";
                     time_Appointment.Text = "";
+                    _availablepatientWindow.grdPatients.ItemsSource = _availablepatientWindow.GetPatientsFromDatabase(patientID).DefaultView;
                     cbo_Appointments.SelectedValue = null;
                     FillCboAppoinments();
                 }

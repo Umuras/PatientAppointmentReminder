@@ -20,16 +20,30 @@ namespace Patient_Appointment_Reminder
     /// <summary>
     /// Interaction logic for AvailablePatientWindow.xaml
     /// </summary>
+    ///
+
     public partial class AvailablePatientWindow : Window
     {
         private Patient _selectedPatient = new Patient();
+        public DataTable dtbl = new DataTable();
 
         public AvailablePatientWindow()
         {
             InitializeComponent();
+            FillCboAvailablePatients();
+        }
+
+        public void FillCboAvailablePatients(bool selectedValueNull = false)
+        {
             //Burada ComboBoxın itemssource'ına döndürdüğümüz listeyi yüklüyoruz. Arka planda çalışacak SelectedValuePath'a PatientIDleri, Ekran gözükecek
             //DisplayMemberPath'a ise de PatientNameSurname'i atıyoruz. Bunlar Patient sınıfındaki PatientID ve PatientNameSurname propertylerine
             //yüklenmiş veriler oluyor.
+
+            if (selectedValueNull)
+            {
+                cboAvailablePatients.SelectedValue = null;
+            }
+
             cboAvailablePatients.ItemsSource = GetPatientsInfosFromDatabase();
             cboAvailablePatients.SelectedValuePath = "PatientID";
             cboAvailablePatients.DisplayMemberPath = "PatientNameSurname";
@@ -75,7 +89,7 @@ namespace Patient_Appointment_Reminder
             }
         }
 
-        private DataTable GetPatientsFromDatabase(int selectedPatientID)
+        public DataTable GetPatientsFromDatabase(int selectedPatientID)
         {
             try
             {
@@ -100,9 +114,10 @@ namespace Patient_Appointment_Reminder
 
                 SqlDataReader dr = cmd.ExecuteReader();
                 //Burada ise okunan tüm veriler dataTable'a yüklendi.
-                DataTable dtbl = new DataTable();
+                dtbl = new DataTable();
                 dtbl.Load(dr);
 
+                dr.Close();
                 cnn.Close();
 
                 return dtbl;
@@ -121,13 +136,17 @@ namespace Patient_Appointment_Reminder
             //Cast edebiliyoruz, bize ilk başta obje olarak döndürdüğü için. Sonra onun üzerinden ID veya isme erişim sağlayabileceğiz.
             _selectedPatient = (Patient)cboAvailablePatients.SelectedItem;
 
-            //DataGrid'in ItemsSourceına GetPatientsFromDatabase gelen DataTableı atıyoruz.
-            grdPatients.ItemsSource = GetPatientsFromDatabase(_selectedPatient.PatientID).DefaultView;
+            if (_selectedPatient != null)
+            {
+                dtbl.Clear();
+                //DataGrid'in ItemsSourceına GetPatientsFromDatabase gelen DataTableı atıyoruz.
+                grdPatients.ItemsSource = GetPatientsFromDatabase(_selectedPatient.PatientID).DefaultView;
+            } 
         }
 
         private void btn_takeAppointment_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentCreatingWindow appointment = new AppointmentCreatingWindow();
+            AppointmentCreatingWindow appointment = new AppointmentCreatingWindow(this);
             appointment.lbl_PatientNameSurname.Content = cboAvailablePatients.Text;
             appointment.patientID = _selectedPatient.PatientID;
             appointment.lbl_PatientID.Content += " " + _selectedPatient.PatientID;
@@ -136,12 +155,21 @@ namespace Patient_Appointment_Reminder
 
         private void btn_deleteOrUpdateAppointment_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentEditOrDeleteWindow appointmentEditOrDelete = new AppointmentEditOrDeleteWindow(_selectedPatient.PatientID);
+            AppointmentEditOrDeleteWindow appointmentEditOrDelete = new AppointmentEditOrDeleteWindow(_selectedPatient.PatientID,this);
             appointmentEditOrDelete.lbl_PatientID.Content += " " +  _selectedPatient.PatientID;
             appointmentEditOrDelete.lbl_PatientNameSurname.Content = _selectedPatient.PatientNameSurname;
             if (appointmentEditOrDelete.hasPatientAppointment)
             {
                 appointmentEditOrDelete.ShowDialog();
+            }
+        }
+
+        private void btn_deleteOrUpdatePatient_Click(object sender, RoutedEventArgs e)
+        {
+            PatientEditOrDeleteWindow patientEditOrDeleteWindow = new PatientEditOrDeleteWindow(patientID: _selectedPatient.PatientID, this);
+            if (_selectedPatient.PatientID != 0)
+            {
+                patientEditOrDeleteWindow.ShowDialog();
             }
         }
     }
