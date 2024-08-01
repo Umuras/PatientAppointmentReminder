@@ -60,11 +60,6 @@ namespace WindowsServiceForPatientAppointmentReminder
                 //Hastanın randevu bilgileri içinde dönüp eğer hastanın randevusu bugün, 1 gün kalmış ve 7 gün kalmış ise size mail gönderiyor.
                 for (int i = 0; i < patientAppointmentReminderList.Count; i++)
                 {
-                    if (CalculateAppointmentDay(i) == 0 || CalculateAppointmentDay(i) == 1 || CalculateAppointmentDay(i) == 7)
-                    {
-                        continue;
-                    }
-
                     PatientAppointmentReminderEntity item = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]);
 
                     StringBuilder stb = new StringBuilder();
