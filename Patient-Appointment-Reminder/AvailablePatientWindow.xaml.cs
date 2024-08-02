@@ -58,7 +58,10 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select PatientID, PatientName, PatientSurname from Patient";
+                //cmd.CommandText = "Select PatientID, PatientName, PatientSurname from Patient";
+                //Yukarıdaki yazılan Ad-Hoc sorgu yerine StoredProcedure kullanarak daha performanslı bir yapı elde ediyoruz.
+                cmd.CommandText = "GetPatientInfo";
+                cmd.CommandType = CommandType.StoredProcedure;
                 //SqlDataReader üzerinden kayıtlarımızı okuyoruz.
                 SqlDataReader dr = cmd.ExecuteReader();
                 //Listeye SqlDataReader üzerinden okuduğumuz hasta bilgilerini Patient sınıfındaki propertyle yükleyip ekliyoruz.
@@ -102,7 +105,10 @@ namespace Patient_Appointment_Reminder
                 //Buranın CommandTextinde tablolar türkçe görünsün diye isimleri değiştirildi, boşluklu yazabilmek için [] kullanıldı.
                 //where şartı ile de seçilen id üzerinden sadece o hastanın bilgilerinin gözükmesi sağlandı.
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select PatientID as HastaID, PatientName as [Hasta Adı], PatientSurname as [Hasta Soyadı], PatientBirthDate as [Hasta Doğum Tarihi], PatientGender as [Hasta Cinsiyeti], NumberOfAppointments as [Mevcut Randevu Sayısı], NumberOfPastAppointments as [Geçmiş Randevu Sayısı] from Patient where PatientID = @pid";
+                //cmd.CommandText = "Select PatientID as HastaID, PatientName as [Hasta Adı], PatientSurname as [Hasta Soyadı], PatientBirthDate as [Hasta Doğum Tarihi], PatientGender as [Hasta Cinsiyeti], NumberOfAppointments as [Mevcut Randevu Sayısı], NumberOfPastAppointments as [Geçmiş Randevu Sayısı] from Patient where PatientID = @pid";
+                cmd.CommandText = "SelectedPatient";
+                cmd.CommandType = CommandType.StoredProcedure;
+
 
                 SqlParameter prm = new SqlParameter();
                 prm.ParameterName = "@pid";

@@ -49,7 +49,11 @@ namespace Patient_Appointment_Reminder
                 cmd.Connection = cnn;
 
                 //Ekleme işlemi yapıyoruz, Patient tablosundaki kolonlara ekleme yapıyoruz parametreler üzerinden
-                cmd.CommandText = "insert Patient(PatientName,PatientSurname,PatientBirthDate,PatientGender,NumberOfAppointments,NumberOfPastAppointments) values(@pn,@psn,@pbd,@pg,@napt,@pnapt)";
+                //cmd.CommandText = "insert Patient(PatientName,PatientSurname,PatientBirthDate,PatientGender,NumberOfAppointments,NumberOfPastAppointments) values(@pn,@psn,@pbd,@pg,@napt,@pnapt)";
+                //Burada yazdığımız sorgu yerine StroredProcedure kullanarak daha performanslı bir yapı elde ediyoruz.
+                cmd.CommandText = "AddNewPatient";
+                cmd.CommandType = CommandType.StoredProcedure;
+
 
                 //Burada CommandText kısmında yazdığımız values(@pn,@psn,@pbd,@pg) parametrelerine değer yüklüyoruz.
                 SqlParameter p1 = new SqlParameter();

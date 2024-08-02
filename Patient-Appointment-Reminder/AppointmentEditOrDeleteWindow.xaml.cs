@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -52,7 +53,10 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select * from Appointment where PatientID = @pid";
+                //cmd.CommandText = "Select * from Appointment where PatientID = @pid";
+                cmd.CommandText = "GetAllAppointmentsForSelectedPatient";
+                cmd.CommandType = CommandType.StoredProcedure;
+
 
                 SqlParameter p1 = new SqlParameter("@pid", patientID);
                 cmd.Parameters.Add(p1);
@@ -114,7 +118,9 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select * from Appointment where AppointmentID = @aid";
+                //cmd.CommandText = "Select * from Appointment where AppointmentID = @aid";
+                cmd.CommandText = "GetSelectedAppointment";
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter p1 = new SqlParameter("@aid", selectionAppointmentID);
                 cmd.Parameters.Add(p1);
@@ -159,8 +165,10 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Update Appointment set Hospital=@hp, Section=@sc, Doctor=@dr, AppointmentDate=@apdt, Note=@nt where AppointmentID = @apid";
-
+                //cmd.CommandText = "Update Appointment set Hospital=@hp, Section=@sc, Doctor=@dr, AppointmentDate=@apdt, Note=@nt where AppointmentID = @apid";
+                cmd.CommandText = "UpdateSelectedAppointment";
+                cmd.CommandType = CommandType.StoredProcedure;
+                
                 SqlParameter p0 = new SqlParameter("apid",appointmentEntity.AppointmentID);
                 SqlParameter p1 = new SqlParameter("@hp", txt_Hospital.Text);
                 SqlParameter p2 = new SqlParameter("@sc", txt_HospitalSection.Text);
@@ -203,7 +211,9 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Delete Appointment where AppointmentID = @apid";
+                //cmd.CommandText = "Delete Appointment where AppointmentID = @apid";
+                cmd.CommandText = "DeleteSelectedAppointment";
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter p1 = new SqlParameter(parameterName: "@apid", appointmentEntity.AppointmentID);
                 cmd.Parameters.Add(p1);
@@ -235,7 +245,5 @@ namespace Patient_Appointment_Reminder
                 throw;
             }
         }
-
-        
     }
 }

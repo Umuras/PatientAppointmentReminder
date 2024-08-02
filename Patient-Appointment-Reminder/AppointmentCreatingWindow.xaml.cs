@@ -38,7 +38,10 @@ namespace Patient_Appointment_Reminder
                 cnn.ConnectionString = "server=.; database=PatientAppointmentSystem; integrated security=true";
                 cnn.Open();
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "insert Appointment(PatientID,Hospital,Section,Doctor,AppointmentDate,Note) values(@pid,@hl,@sn,@dr,@apd,@nt)";
+                //cmd.CommandText = "insert Appointment(PatientID,Hospital,Section,Doctor,AppointmentDate,Note) values(@pid,@hl,@sn,@dr,@apd,@nt)";
+                cmd.CommandText = "TakeAppointment";
+                cmd.CommandType = CommandType.StoredProcedure;
+
 
                 SqlParameter p0 = new SqlParameter();
                 p0.ParameterName = "@pid";

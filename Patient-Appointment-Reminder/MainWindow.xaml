@@ -9,7 +9,7 @@
     <Canvas Background="#FF1CD6ED">
         <Label Content="HASTA RANDEVU HATIRLATICI" Canvas.Left="130" Canvas.Top="30" FontSize="36" FontWeight="Bold"/>
         <Button x:Name="yeniHastaGirisiButton" Content="Yeni Hasta Girişi" Canvas.Left="350" Canvas.Top="152" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="yeniHastaGirisiButton_Click"/>
-        <Button x:Name="btn_AvailablePatients" Content="Mevcut Hastalar" Canvas.Left="350" Canvas.Top="217" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btn_AvailablePatients_Click"/>
+        <Button x:Name="btn_AvailablePatients" Content="Mevcut Hasta Seç" Canvas.Left="350" Canvas.Top="217" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btn_AvailablePatients_Click"/>
 
     </Canvas>
 </Window>

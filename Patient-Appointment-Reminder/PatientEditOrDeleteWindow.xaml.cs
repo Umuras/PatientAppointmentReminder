@@ -48,7 +48,9 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select * from Patient where PatientID = @pid";
+                //cmd.CommandText = "Select PatientName, PatientSurname, PatientBirthDate, PatientGender from Patient where PatientID = @pid";
+                cmd.CommandText = "GetPatientSpecificInfo";
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter p1 = new SqlParameter("@pid", _patientID);
                 cmd.Parameters.Add(p1);
@@ -91,21 +93,24 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Update Patient Set PatientName=@pn, PatientSurname=@psn, PatientBirthDate=@pbd, PatientGender=@pg where PatientID=@pid";
+                //cmd.CommandText = "Update Patient Set PatientName=@pn, PatientSurname=@psn, PatientBirthDate=@pbd, PatientGender=@pg where PatientID=@pid";
+                cmd.CommandText = "UpdatePatientInfo";
+                cmd.CommandType = CommandType.StoredProcedure;
+
 
                 SqlParameter p0 = new SqlParameter("@pid", _patientID);
                 SqlParameter p1 = new SqlParameter("@pn", txtbox_PatientName.Text);
                 SqlParameter p2 = new SqlParameter("@psn", txtbox_PatientSurname.Text);
                 SqlParameter p3 = new SqlParameter("@pbd", datepicker_PatientBirthDate.SelectedDate.Value.Date);
                 
-                if (rdrBtn_GenderMale.IsChecked.HasValue)
+                if ((bool)rdrBtn_GenderMale.IsChecked)
                 {
                     if (rdrBtn_GenderMale.IsChecked.Value)
                     {
                         _gender = _male;
                     }
                 }
-                else if (rdrBtn_GenderFemale.IsChecked.HasValue)
+                else if ((bool)rdrBtn_GenderFemale.IsChecked)
                 {
                     if (rdrBtn_GenderFemale.IsChecked.Value)
                     {
@@ -150,7 +155,10 @@ namespace Patient_Appointment_Reminder
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Delete From Appointment Where PatientID = @pid Delete From PastAppointment Where PatientID = @pid Delete Patient where PatientID = @pid";
+                //cmd.CommandText = "Delete From Appointment Where PatientID = @pid Delete From PastAppointment Where PatientID = @pid Delete Patient where PatientID = @pid";
+                cmd.CommandText = "DeletePatient";
+                cmd.CommandType = CommandType.StoredProcedure;
+
 
                 SqlParameter p1 = new SqlParameter("@pid", _patientID);
                 cmd.Parameters.Add(p1);
