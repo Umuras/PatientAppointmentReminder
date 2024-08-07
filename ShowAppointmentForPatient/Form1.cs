@@ -133,11 +133,25 @@ namespace ShowAppointmentForPatient
         //Burada randevu tarihi ile bugünün tarihini çıkararak randevuya kaç gün kaldığını hesaplıyoruz.
         private int CalculateAppointmentDay(int i)
         {
-            TimeSpan day;
+            TimeSpan timeSpanDay;
+            int day = 0;
 
-            day = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date - DateTime.Now;
+            timeSpanDay = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date - DateTime.Now;
 
-            return day.Days;
+            if (timeSpanDay.Days == 0)
+            {
+                day = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date.Day - DateTime.Now.Day;
+            }
+            else if (timeSpanDay.Days == 6)
+            {
+                day = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date.Day - DateTime.Now.Day;
+            }
+            else
+            {
+                day = timeSpanDay.Days;
+            }
+
+            return day;
         }
 
         //Burada ise ekran boyutu değiştiği anda yeni ekran boyutuna göre textboxımızın boyutunun tekrar ayarlan-
