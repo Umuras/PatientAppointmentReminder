@@ -1,6 +1,6 @@
 # PatientAppointmentReminder
 ### Programın Amacı <br/>
-Bu programda hasta kaydı oluşturup o hasta için randevu oluşturup randevuları ve hasta bilgilerini düzenleyip silebildiğiniz, aynı zamanda en önemli özelliği ise hastanın randevusunu size 7 gün, 1 gün ve aynı gün bilgisayar üzerinden ve mail üzerinden haber vermesidir.
+Bu programda hasta kaydı oluşturup o hasta için randevu oluşturup randevuları ve hasta bilgilerini düzenleyip silebildiğiniz, aynı zamanda en önemli özelliği ise hastanın randevusunu size 7 gün, 1 gün veya aynı gün olduğunda bilgisayar üzerinden ve mail üzerinden haber vermesidir.
 Bu program aynı zamanda çok yönlü bir programdır, çünkü sadece hasta randevusu hatırlatma programı olmaktan ziyade, iş görüşmelerinizi yapacağınız insanları kaydederek o insanlar hakkında ve toplantı hakkında bilgileri kaydedip size belirlediğiniz zamanda hatırlatmasını
 sağlayabilirsiniz.
 ### Programdaki Özellikler
