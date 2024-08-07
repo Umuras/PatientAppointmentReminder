@@ -11,8 +11,8 @@ sağlayabilirsiniz.
 - Randevu Kaydı Silme,
 - Randevu Kaydı Düzenleme,
 - Mevcut Seçilen Hasta Bilgilerini Görüntüleme,
-- Mevcut Seçilen Hastanın Randevu Bilgilerini Görnütüleme,
-- Hastanın randevu vakti geldiğinde ya da 7 gün veya 1 gün kala bilgisayar tarafından program ile gösterilmesi ve mail adresine mail atılması,
+- Mevcut Seçilen Hastanın Randevu Bilgilerini Görüntüleme,
+- Hastanın randevu vakti geldiğinde ya da 7 gün veya 1 gün kala bilgisayar tarafından program ile gösterilmesi ve mail adresine randevu bilgilerinin mail atılması,
 - Hastanın randevusunun tarihi geçince geçmiş randevu tablosuna verilerin gönderilmesi ve mevcut randevulardan kaldırılması
 ### Program İçi Görseller
 - Ana Ekran <br/>
