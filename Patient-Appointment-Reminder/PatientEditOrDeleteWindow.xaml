@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patient_Appointment_Reminder"
         mc:Ignorable="d"
-        Title="PatientEditOrDeleteWindow" Height="450" Width="800">
+        Title="Hasta Güncelleme veya Silme Ekranı" Height="450" Width="800">
     <Canvas Background="#FF1CD6ED">
         <Label Content="Hasta Adı: " Canvas.Left="25" Canvas.Top="25" Width="100" Height="39" FontSize="19" FontStyle="Normal" FontWeight="Bold"/>
         <TextBox x:Name="txtbox_PatientName" Canvas.Left="132" TextWrapping="Wrap" Canvas.Top="25" Width="233" Height="39" FontSize="25"/>

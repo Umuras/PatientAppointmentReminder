@@ -33,7 +33,7 @@ namespace Patient_Appointment_Reminder
             FillCboAvailablePatients();
         }
 
-        public void FillCboAvailablePatients(bool selectedValueNull = false)
+        public void FillCboAvailablePatients(bool selectedValueNull = false, int selectedIndex = -1)
         {
             //Burada ComboBoxın itemssource'ına döndürdüğümüz listeyi yüklüyoruz. Arka planda çalışacak SelectedValuePath'a PatientIDleri, Ekran gözükecek
             //DisplayMemberPath'a ise de PatientNameSurname'i atıyoruz. Bunlar Patient sınıfındaki PatientID ve PatientNameSurname propertylerine
@@ -47,6 +47,11 @@ namespace Patient_Appointment_Reminder
             cboAvailablePatients.ItemsSource = GetPatientsInfosFromDatabase();
             cboAvailablePatients.SelectedValuePath = "PatientID";
             cboAvailablePatients.DisplayMemberPath = "PatientNameSurname";
+
+            if (selectedIndex != -1)
+            {
+                cboAvailablePatients.SelectedIndex = selectedIndex;
+            }
         }
 
         private ArrayList GetPatientsInfosFromDatabase()

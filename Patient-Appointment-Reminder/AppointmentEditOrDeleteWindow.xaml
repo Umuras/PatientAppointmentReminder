@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Patient_Appointment_Reminder" 
         xmlns:wpfTool="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="AppointmentEditOrDeleteWindow" Height="600" Width="800">
+        Title="Randevu Güncelleme veya Silme Ekranı" Height="600" Width="800">
     <Canvas Background="#FF1CD6ED">
         <Label Content="Hasta Adı Soyadı:" Canvas.Left="31" Canvas.Top="100" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="lbl_PatientNameSurname" Content="" Canvas.Left="203" Canvas.Top="100" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>

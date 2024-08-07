@@ -130,6 +130,9 @@ namespace Patient_Appointment_Reminder
                 if (success != 0)
                 {
                     MessageBox.Show("Hasta Bilgileri Başarıyla Güncellendi!!!");
+                    _availablePatient.grdPatients.ItemsSource = _availablePatient.GetPatientsFromDatabase(_patientID).DefaultView;
+                    int tempSelectedIndex = _availablePatient.cboAvailablePatients.SelectedIndex;
+                    _availablePatient.FillCboAvailablePatients(selectedIndex: tempSelectedIndex);
                 }
                 else
                 {

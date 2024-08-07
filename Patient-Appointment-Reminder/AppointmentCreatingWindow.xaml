@@ -6,7 +6,7 @@
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:local="clr-namespace:Patient_Appointment_Reminder"
         mc:Ignorable="d"
-        Title="AppointmentCreatingWindow" Height="600" Width="800">
+        Title="Randevu Ekleme Ekranı" Height="600" Width="800">
     <Canvas x:Name="AppointmentCreatingWindow2" Background="#FF1CD6ED">
         <Label Content="Hasta Adı Soyadı:" Canvas.Left="32" Canvas.Top="60" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="lbl_PatientNameSurname" Content="" Canvas.Left="204" Canvas.Top="60" FontSize="19" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Patient_Appointment_Reminder"
         mc:Ignorable="d"
-        Title="AvailablePatientWindow" Height="500" Width="850">
+        Title="Mevcut Hasta Ekranı" Height="500" Width="850">
     <Canvas Background="#FF1CD6ED">
         <ComboBox x:Name="cboAvailablePatients" Canvas.Left="131" Canvas.Top="27" Width="150" SelectionChanged="cboAvailablePatients_SelectionChanged"/>
         <Label Content="Mevcut Hastalar" Canvas.Left="25" Canvas.Top="23" RenderTransformOrigin="0.177,0.075" FontWeight="Bold"/>
