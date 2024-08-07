@@ -86,6 +86,9 @@ namespace ShowAppointmentForPatient
                         upcomingAppointments++;
                         patient.Add(item.PatientFullName);
                         stb.AppendLine("Randevuye Kalan Gün Sayısı: " + CalculateAppointmentDay(i));
+                        stb.AppendLine("----------------------------------------------------------------");
+                        txt_AppointmentInfos.Text = stb.ToString();
+                        txt_AppointmentInfos.ReadOnly = true;
                     }
                 }
                 //Burada eğer textboxda birden fazla hasta randevu bilgisi gösterilecekse lbl_appointmentTitle'a ikisininde ismini yazıyoruz.
