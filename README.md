@@ -28,11 +28,12 @@ sağlayabilirsiniz.
 - Hasta Güncelleme veya Silme Ekranı <br/>
 ![Hasta Güncelleme veya Silme Ekranı](https://github.com/user-attachments/assets/f03f8ce0-3887-42b1-876c-9ba28bbb8b97)
 - Yaklaşan Randevu Ekranı(Randevu aynı gün, 1 gün veya 1 hafta kala bilgisayarda açılacak uygulama) <br/>
-![Yaklaşan Randevular](https://github.com/user-attachments/assets/3c2f354a-7b36-4959-8aae-32a7695c0723)
+![Yaklaşan Randevular2](https://github.com/user-attachments/assets/0cbeb261-dcf6-40a6-b697-9e371ea01b43)
 - Windows Service Kısmı <br/>
 ![Windows Service Kismi](https://github.com/user-attachments/assets/36a835c5-027d-41f0-8821-c9949dc16f79)
 - Yaklaşan Randevunun Mail Gelme Ekranı <br/>
-![Gelen Mail](https://github.com/user-attachments/assets/34e35a2d-6eb9-4f2b-b143-53c09ea64ad0)
+![Gelen Mail2](https://github.com/user-attachments/assets/6b37399a-d650-424f-b88d-bcd76e93a0d8)
+
 
 
 
