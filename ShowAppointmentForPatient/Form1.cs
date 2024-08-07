@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
@@ -35,7 +36,9 @@ namespace ShowAppointmentForPatient
                 cnn.Open();
 
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select ap.AppointmentID, ap.PatientID, pt.PatientName + ' ' + pt.PatientSurname as PatientFullName, ap.AppointmentDate, ap.Hospital, ap.Section, ap.Doctor, ap.Note from Appointment as ap, Patient as pt where ap.PatientID = pt.PatientID";
+                //cmd.CommandText = "Select ap.AppointmentID, ap.PatientID, pt.PatientName + ' ' + pt.PatientSurname as PatientFullName, ap.AppointmentDate, ap.Hospital, ap.Section, ap.Doctor, ap.Note from Appointment as ap, Patient as pt where ap.PatientID = pt.PatientID";
+                cmd.CommandText = "UpcomingAppointments";
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 //Elde ettiğimiz hasta bilgilerini oluşturduğumuz listede tutarak o liste içinden işlem yapacağız.
                 patientAppointmentReminderList = new ArrayList();

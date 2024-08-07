@@ -34,7 +34,9 @@ namespace WindowsServiceForPatientAppointmentReminder
 
                 //SqlCommand sınıfı ile SQL'e göndereceğimiz komut giriliyor.
                 SqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Select ap.AppointmentID, ap.PatientID, pt.PatientName + ' ' + pt.PatientSurname as PatientFullName, ap.AppointmentDate, ap.Hospital, ap.Section, ap.Doctor, ap.Note from Appointment as ap, Patient as pt where ap.PatientID = pt.PatientID";
+                //cmd.CommandText = "Select ap.AppointmentID, ap.PatientID, pt.PatientName + ' ' + pt.PatientSurname as PatientFullName, ap.AppointmentDate, ap.Hospital, ap.Section, ap.Doctor, ap.Note from Appointment as ap, Patient as pt where ap.PatientID = pt.PatientID";
+                cmd.CommandText = "UpcomingAppointments";
+                cmd.CommandType = CommandType.StoredProcedure;
 
                 patientAppointmentReminderList = new ArrayList();
              
@@ -95,11 +97,25 @@ namespace WindowsServiceForPatientAppointmentReminder
         //Burada ise databaseden eriştiğimiz hastanın randevu tarihi ile bugünün tarihini çıkararak kalan gün sayısını hesaplıyoruz.
         private int CalculateAppointmentDay(int i)
         {
-            TimeSpan day;
+            TimeSpan timeSpanDay;
+            int day = 0;
 
-            day = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date - DateTime.Now;
+            timeSpanDay = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date - DateTime.Now;
 
-            return day.Days;
+            if (timeSpanDay.Days == 0)
+            {
+                day = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date.Day - DateTime.Now.Day;
+            }
+            else if (timeSpanDay.Days == 6)
+            {
+                day = ((PatientAppointmentReminderEntity)patientAppointmentReminderList[i]).AppointmentDate.Date.Day - DateTime.Now.Day;
+            }
+            else
+            {
+                day = timeSpanDay.Days;
+            }
+
+            return day;
         }
         //Burada ise databaseden elde ettiğimiz hasta bilgileri üzerinden eğer randevu tarihi bugün, 1 gün veya 7 kalmış ise bunu mail
         //olarak randevu bilgilerini belirlediğimiz mail adreslerine gönderiyoruz.
