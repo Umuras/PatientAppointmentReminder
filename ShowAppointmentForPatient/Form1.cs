@@ -111,7 +111,7 @@ namespace ShowAppointmentForPatient
                     }
                     lbl_appointmentTitle.Text += "Randevu Bilgileri";
                 }
-                else
+                else if (patient.Count == 1)
                 {
                     lbl_appointmentTitle.Text = patient[0] + " Randevu Bilgisi";
                 }
